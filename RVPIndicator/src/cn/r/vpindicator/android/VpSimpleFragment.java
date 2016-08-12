@@ -20,6 +20,8 @@ public class VpSimpleFragment extends Fragment {
 			mTitle = arguments.getString(BUNDLE_TITLE);
 		}
 
+		LogUtils.w("mTitle = " + mTitle);
+
 		TextView tv = new TextView(getActivity());
 		tv.setText(mTitle);
 		tv.setGravity(Gravity.CENTER);

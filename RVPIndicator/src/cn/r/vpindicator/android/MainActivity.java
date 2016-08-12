@@ -9,10 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Window;
 import cn.r.vpindicator.android.view.RVPIndicator;
-import cn.r.vpindicator.android.view.RVPIndicator.PageChangeListener;
+import cn.r.vpindicator.android.view.RVPIndicator.OnIndicatorSelected;
 
 public class MainActivity extends FragmentActivity {
 	private List<Fragment> mTabContents = new ArrayList<Fragment>();
@@ -36,6 +35,18 @@ public class MainActivity extends FragmentActivity {
 		mViewPager.setAdapter(mAdapter);
 		// 设置关联的ViewPager
 		mIndicator.setViewPager(mViewPager, 1);
+
+		// Indicator选中监听
+		mIndicator.setOnIndicatorSelected(new OnIndicatorSelected() {
+
+			@Override
+			public void setOnIndicatorSelected(int position, String title) {
+				LogUtils.w("------OnIndicatorSelected-------position="
+						+ position + "--title=" + title);
+
+			}
+		});
+
 		// PageChange监听
 		/*
 		 * mIndicator.setOnPageChangeListener(new PageChangeListener() {

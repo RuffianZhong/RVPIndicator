@@ -138,6 +138,30 @@ public class RVPIndicator extends LinearLayout {
 	 */
 	private int mPosition = 0;
 
+	/**
+	 * VPIndicator选中接口
+	 * 
+	 * @author Ruffian
+	 * @date 2016年8月12日
+	 * 
+	 */
+	public interface OnIndicatorSelected {
+		void setOnIndicatorSelected(int position, String title);
+	}
+
+	private OnIndicatorSelected mOnIndicatorSelected;
+
+	/**
+	 * 设置监听
+	 * 
+	 * @param mOnIndicatorSelected
+	 * @author Ruffian
+	 * @date 2016年8月12日
+	 */
+	public void setOnIndicatorSelected(OnIndicatorSelected mOnIndicatorSelected) {
+		this.mOnIndicatorSelected = mOnIndicatorSelected;
+	}
+
 	public RVPIndicator(Context context) {
 		this(context, null);
 	}
@@ -326,6 +350,13 @@ public class RVPIndicator extends LinearLayout {
 				if (onPageChangeListener != null) {
 					onPageChangeListener.onPageSelected(position);
 				}
+
+				//回调
+				if (mOnIndicatorSelected != null) {
+					mOnIndicatorSelected.setOnIndicatorSelected(position,
+							mTabTitles == null ? "" : mTabTitles.get(position));
+				}
+
 			}
 
 			@Override
@@ -354,6 +385,12 @@ public class RVPIndicator extends LinearLayout {
 		// 设置当前页
 		mViewPager.setCurrentItem(pos);
 		mPosition = pos;
+		
+		//回调
+		if (mOnIndicatorSelected != null) {
+			mOnIndicatorSelected.setOnIndicatorSelected(pos,
+					mTabTitles == null ? "" : mTabTitles.get(pos));
+		}
 
 	}
 
