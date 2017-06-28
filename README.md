@@ -1,4 +1,4 @@
-#1.什么是 RVPIndicator
+# 1.什么是 RVPIndicator #
 ###简单实用的ViewPageIndicator，支持item自身滚动
 > 高仿MIUI但更胜于MIUI，提供多种指示器类型{下滑线，三角形，全背景}
 
@@ -7,8 +7,8 @@
 > 觉得这不满足你的需求？没问题，**RVPIndicator** 还支持使用图片作为指示器。一张图实现你的愿望
 
 ![](hello_1.gif)
-
-#2. RVPIndicator 使用
+# 2. RVPIndicator 使用 #
+    
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:rvp="http://schemas.android.com/apk/res-auto"
@@ -38,8 +38,9 @@
 
 	</LinearLayout>
 
-###2.1 自定义属性解释
-    	rvp:indicator_color="#f29b76"				//指示器颜色
+
+## 2.1 自定义属性解释 ##
+	    rvp:indicator_color="#f29b76"				//指示器颜色
         rvp:indicator_src="@drawable/heart_love"	//指示器图片{指示器类型为bitmap时需要}
         rvp:indicator_style="triangle"				//指示器类型
        											    //{bitmap：图片；line：下划线；square：方形全背景；triangle：三角形}
@@ -53,7 +54,7 @@
 
 
 
-###2.2 代码调用
+## 2.2 代码调用 ##
     	// 设置Tab上的标题
 		mIndicator.setTabItemTitles(mDatas);
 
@@ -70,7 +71,7 @@
 		});
 
 
-###version
+## version ##
 v1.0.2
 .修复7.0以上系统无法显示title
 
