@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RVPIndicator -->
+    <declare-styleable name="RVPIndicator">
+        <attr name="text_color_normal" format="color" />
+        <attr name="text_color_selected" format="color" />
+        <attr name="text_size" format="dimension" />
+        <!--指示器可见数量-->
+        <attr name="indicator_visible_count" format="integer" />
+        <attr name="indicator_color" format="color" />
+        <attr name="indicator_style">
+            <enum name="bitmap" value="0" />
+            <enum name="line" value="1" />
+            <enum name="square" value="2" />
+            <enum name="triangle" value="3" />
+        </attr>
+        <!--指示器bitmap资源,style=bitmap有效-->
+        <attr name="style_bitmap_src" format="reference" />
+        <!--线性指示器左右padding，默认根据数量均分屏幕-->
+        <attr name="style_line_padding" format="dimension" />
+    </declare-styleable>
+
+</resources>
