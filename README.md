@@ -7,7 +7,7 @@
 
 > 简单实用的ViewPager指示器 实现联动，自身滚动。
 > 
-> 高仿MIUI但更胜于MIUI，提供多种指示器类型。支持类型 : 下滑线，三角形，全背景，图片
+> 高仿MIUI但更胜于MIUI，提供多种指示器类型。支持类型 : 下滑线(可设置指示器高度)，三角形，图片
 
 ### 2.效果图
 
@@ -25,7 +25,8 @@
 | text_size 					|	文本大小		 		|
 | indicator_visible_count 		|   屏幕可见指示器数量		|
 | indicator_color 				|   指示器颜色		 	|
-| indicator_style 				|   指示器样式 	{ bitmap：图片；line：下划线；square：方形全背景；triangle：三角形 }	|
+| indicator_style 				|   指示器样式 	{ bitmap：图片；line：下划线；triangle：三角形 }	|
+| indicator_height 				|   指示器高度 	style=line有效	|
 | style_bitmap_src 				|   指示器图片路径  style=bitmap有效 	|
 | style_line_padding 			|   指示器下划线左右padding	style=line有效 	|
 
@@ -33,7 +34,7 @@
 > ### 4.1  Gradle （版本号根据更新历史使用最新版）
 
 
-    compile 'com.ruffian.library:RVPIndicator:1.0.3'
+    compile 'com.ruffian.library:RVPIndicator:1.0.4'
 
 
 > ### 4.2 XML使用
@@ -51,6 +52,8 @@
         rvp:indicator_style="triangle"
         //指示器可见数量
         rvp:indicator_visible_count="4"
+		//指示器高度
+		rvp:indicator_height="2dp"
     
         //指示器图片
         rvp:style_bitmap_src="@mipmap/ic_launcher"
@@ -115,6 +118,9 @@
 
 
 ### 5.版本历史
+
+
+**v1.0.4**　`2017.11.10`　添加指示器高度设置（line模式有效，去除全背景模式，全背景效果通过设置指示器高度实现），修复BUG [#3](https://github.com/RuffianZhong/RVPIndicator/issues/3)
 
 **v1.0.3**　`2017.09.08`　发布正式版本
 
