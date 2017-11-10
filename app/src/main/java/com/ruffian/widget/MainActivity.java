@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentPagerAdapter mAdapter;
 
     private ViewPager mViewPager;
-    private RVPIndicator mIndicator, mIndicator1, mIndicator2, mIndicator3, mIndicator4;
+    private RVPIndicator mIndicator, mIndicator1, mIndicator3, mIndicator4;
     private List<String> mList = Arrays.asList("军事", "政治", "娱乐", "头条", "段子", "视频", "直播");
 
 
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         // 设置Tab上的标题
         mIndicator.setTitleList(mList);
         mIndicator1.setTitleList(mList);
-        mIndicator2.setTitleList(mList);
         mIndicator3.setTitleList(mList);
         mIndicator4.setTitleList(mList);
 
@@ -106,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.vp_content);
         mIndicator = (RVPIndicator) findViewById(R.id.vp_indicator);
         mIndicator1 = (RVPIndicator) findViewById(R.id.vp_indicator1);
-        mIndicator2 = (RVPIndicator) findViewById(R.id.vp_indicator2);
         mIndicator3 = (RVPIndicator) findViewById(R.id.vp_indicator3);
         mIndicator4 = (RVPIndicator) findViewById(R.id.vp_indicator4);
     }

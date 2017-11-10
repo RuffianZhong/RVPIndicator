@@ -13,10 +13,12 @@
         android:background="#ADD597"
         android:orientation="horizontal"
         rvp:indicator_color="#f29b76"
+        rvp:indicator_height="2dp"
         rvp:indicator_style="line"
         rvp:indicator_visible_count="4"
         rvp:text_color_normal="#fb9090"
-        rvp:text_color_selected="#FF0000" />
+        rvp:text_color_selected="#FF0000"
+        rvp:text_size="16sp" />
 
 
     <com.ruffian.library.RVPIndicator
@@ -32,21 +34,6 @@
         rvp:style_line_padding="10dp"
         rvp:text_color_normal="#fb9090"
         rvp:text_color_selected="#FF0000" />
-
-
-    <com.ruffian.library.RVPIndicator
-        android:id="@+id/vp_indicator2"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="#ADD597"
-        android:orientation="horizontal"
-        rvp:indicator_color="#f29b76"
-        rvp:indicator_style="square"
-        rvp:indicator_visible_count="4"
-        rvp:text_color_normal="#fb9090"
-        rvp:text_color_selected="#FF0000" />
-
 
     <com.ruffian.library.RVPIndicator
         android:id="@+id/vp_indicator3"
