@@ -42,10 +42,8 @@ public class RVPIndicator extends LinearLayout {
     private static final int STYLE_BITMAP = 0;
     // 指示器风格-下划线
     private static final int STYLE_LINE = 1;
-    // 指示器风格-方形背景
-    private static final int STYLE_SQUARE = 2;
     // 指示器风格-三角形
-    private static final int STYLE_TRIANGLE = 3;
+    private static final int STYLE_TRIANGLE = 2;
 
     /**
      * 系统默认:Tab数量
@@ -86,7 +84,7 @@ public class RVPIndicator extends LinearLayout {
     /**
      * 文字大小
      */
-    private int mTextSize = 16;
+    private int mTextSize;
 
     /**
      * 文字正常时的颜色
@@ -121,7 +119,7 @@ public class RVPIndicator extends LinearLayout {
     /**
      * 指示器高
      */
-    private int mIndicatorHeight = 10;
+    private int mIndicatorHeight = -1;
 
     /**
      * 指示器宽
@@ -153,7 +151,6 @@ public class RVPIndicator extends LinearLayout {
      */
     private int mStyleLinePadding = 0;
 
-
     public RVPIndicator(Context context) {
         this(context, null);
     }
@@ -166,10 +163,11 @@ public class RVPIndicator extends LinearLayout {
         mTabVisibleCount = a.getInt(R.styleable.RVPIndicator_indicator_visible_count, D_TAB_COUNT);
         mTextColorNormal = a.getColor(R.styleable.RVPIndicator_text_color_normal, D_TEXT_COLOR_NORMAL);
         mTextColorHighlight = a.getColor(R.styleable.RVPIndicator_text_color_selected, D_TEXT_COLOR_HIGHLIGHT);
-        mTextSize = a.getDimensionPixelSize(R.styleable.RVPIndicator_text_size, 16);
+        mTextSize = a.getDimensionPixelSize(R.styleable.RVPIndicator_text_size, dip2px(context, 16));
         mIndicatorColor = a.getColor(R.styleable.RVPIndicator_indicator_color, D_INDICATOR_COLOR);
         mIndicatorStyle = a.getInt(R.styleable.RVPIndicator_indicator_style, STYLE_LINE);
         mStyleLinePadding = a.getDimensionPixelSize(R.styleable.RVPIndicator_style_line_padding, 0);
+        mIndicatorHeight = a.getDimensionPixelSize(R.styleable.RVPIndicator_indicator_height, -1);
         Drawable drawable = a.getDrawable(R.styleable.RVPIndicator_style_bitmap_src);
 
         if (drawable != null) {
@@ -208,14 +206,13 @@ public class RVPIndicator extends LinearLayout {
         switch (mIndicatorStyle) {
             case STYLE_LINE:
                 /**
-                 * 下划线指示器:宽与item相等,高是item的1/10
+                 * 下划线指示器:宽与item相等,高:0 没有指示器；未设置：item的1/10 ；具体值
                  */
                 mIndicatorWidth = (w / mTabVisibleCount) - (mStyleLinePadding * 2);
-                mIndicatorHeight = h / 10;
+                mIndicatorHeight = mIndicatorHeight < 0 ? h / 10 : mIndicatorHeight;
                 mTranslationX = 0;
                 mRectF = new Rect(mStyleLinePadding, 0, mIndicatorWidth + mStyleLinePadding, mIndicatorHeight);
                 break;
-            case STYLE_SQUARE:
             case STYLE_BITMAP:
                 /**
                  * 方形/图标指示器:宽,高与item相等
@@ -227,10 +224,10 @@ public class RVPIndicator extends LinearLayout {
                 break;
             case STYLE_TRIANGLE:
                 /**
-                 * 三角形指示器:宽与item(1/4)相等,高是item的1/4
+                 * 三角形指示器:宽与item(1/5)相等,高item的1/5
                  */
-                mIndicatorWidth = w / mTabVisibleCount / 4;
-                mIndicatorHeight = h / 4;
+                mIndicatorWidth = w / mTabVisibleCount / 5;
+                mIndicatorHeight = h / 5;
                 mTranslationX = 0;
                 break;
         }
@@ -255,10 +252,6 @@ public class RVPIndicator extends LinearLayout {
                 break;
             case STYLE_LINE:
                 canvas.translate(mTranslationX, getHeight() - mIndicatorHeight);
-                canvas.drawRect(mRectF, mPaint);
-                break;
-            case STYLE_SQUARE:
-                canvas.translate(mTranslationX, 0);
                 canvas.drawRect(mRectF, mPaint);
                 break;
             case STYLE_TRIANGLE:
@@ -380,7 +373,7 @@ public class RVPIndicator extends LinearLayout {
          * 重绘指示器
          */
         mIndicatorWidth = (getWidth() / mTabVisibleCount) - (mStyleLinePadding * 2);
-        mIndicatorHeight = getHeight() / 10;
+        mIndicatorHeight = mIndicatorHeight < 0 ? getHeight() / 10 : mIndicatorHeight;
         mRectF = new Rect(mStyleLinePadding, 0, mIndicatorWidth + mStyleLinePadding, mIndicatorHeight);
         invalidate();
     }
@@ -394,8 +387,8 @@ public class RVPIndicator extends LinearLayout {
                 this.removeAllViews();
             }
             for (String title : mTabTitles) {
-                measure(0, 0);
                 addView(createTextView(title));
+                measure(0, 0);
             }
 
             // 设置点击事件
@@ -485,7 +478,7 @@ public class RVPIndicator extends LinearLayout {
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(mTextColorNormal);
         tv.setText(text);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTextSize);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
         tv.setLayoutParams(lp);
         return tv;
     }

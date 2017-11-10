@@ -11,13 +11,14 @@
         <attr name="indicator_style">
             <enum name="bitmap" value="0" />
             <enum name="line" value="1" />
-            <enum name="square" value="2" />
-            <enum name="triangle" value="3" />
+            <enum name="triangle" value="2" />
         </attr>
         <!--指示器bitmap资源,style=bitmap有效-->
         <attr name="style_bitmap_src" format="reference" />
         <!--线性指示器左右padding，默认根据数量均分屏幕-->
         <attr name="style_line_padding" format="dimension" />
+        <!--指示器高度-->
+        <attr name="indicator_height" format="dimension" />
     </declare-styleable>
 
 </resources>
