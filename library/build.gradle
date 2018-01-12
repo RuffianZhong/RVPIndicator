@@ -40,7 +40,7 @@ publish {
     userOrg = 'ruffian'
     groupId = 'com.ruffian.library'
     artifactId = 'RVPIndicator'
-    publishVersion = '1.0.4'
+    publishVersion = '1.0.6'
     desc = 'A Indicator for ViewPager easy to use.'
     website = 'https://github.com/RuffianZhong/RVPIndicator'
 }

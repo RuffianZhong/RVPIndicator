@@ -218,8 +218,8 @@ public class RVPIndicator extends LinearLayout {
                 /**
                  * 方形/图标指示器:宽,高与item相等
                  */
-                mIndicatorWidth = w / mTabVisibleCount;
-                mIndicatorHeight = h;
+                mIndicatorWidth = mIndicatorWidth < 0 ? w / mTabVisibleCount : mIndicatorWidth;
+                mIndicatorHeight = mIndicatorHeight < 0 ? h : mIndicatorHeight;
                 mTranslationX = 0;
                 mRectF = new Rect(0, 0, mIndicatorWidth, mIndicatorHeight);
                 break;
