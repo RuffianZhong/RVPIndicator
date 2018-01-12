@@ -26,7 +26,8 @@
 | indicator_visible_count 		|   屏幕可见指示器数量		|
 | indicator_color 				|   指示器颜色		 	|
 | indicator_style 				|   指示器样式 	{ bitmap：图片；line：下划线；triangle：三角形 }	|
-| indicator_height 				|   指示器高度 	style=line有效	|
+| indicator_height 				|   指示器高度 		|
+| indicator_width 				|   指示器宽度 		|
 | style_bitmap_src 				|   指示器图片路径  style=bitmap有效 	|
 | style_line_padding 			|   指示器下划线左右padding	style=line有效 	|
 
@@ -34,7 +35,7 @@
 > ### 4.1  Gradle （版本号根据更新历史使用最新版）
 
 
-    compile 'com.ruffian.library:RVPIndicator:1.0.4'
+    compile 'com.ruffian.library:RVPIndicator:1.0.6'
 
 
 > ### 4.2 XML使用
@@ -54,6 +55,8 @@
         rvp:indicator_visible_count="4"
 		//指示器高度
 		rvp:indicator_height="2dp"
+		//指示器宽度
+		rvp:indicator_widtht="20dp"
     
         //指示器图片
         rvp:style_bitmap_src="@mipmap/ic_launcher"
@@ -119,6 +122,10 @@
 
 ### 5.版本历史
 
+
+**v1.0.6**　`2018.01.12`　扩展指示器宽高均可设置，对各个模式有效
+
+**v1.0.5**　`2018.01.12`　添加指示器宽度设置
 
 **v1.0.4**　`2017.11.10`　添加指示器高度设置（line模式有效，去除全背景模式，全背景效果通过设置指示器高度实现），修复BUG [#3](https://github.com/RuffianZhong/RVPIndicator/issues/3)
 
