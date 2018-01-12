@@ -124,7 +124,7 @@ public class RVPIndicator extends LinearLayout {
     /**
      * 指示器宽
      */
-    private int mIndicatorWidth = getWidth() / mTabVisibleCount;
+    private int mIndicatorWidth = -1;
 
     /**
      * 手指滑动时的偏移量
@@ -168,6 +168,7 @@ public class RVPIndicator extends LinearLayout {
         mIndicatorStyle = a.getInt(R.styleable.RVPIndicator_indicator_style, STYLE_LINE);
         mStyleLinePadding = a.getDimensionPixelSize(R.styleable.RVPIndicator_style_line_padding, 0);
         mIndicatorHeight = a.getDimensionPixelSize(R.styleable.RVPIndicator_indicator_height, -1);
+        mIndicatorWidth = a.getDimensionPixelSize(R.styleable.RVPIndicator_indicator_width, -1);
         Drawable drawable = a.getDrawable(R.styleable.RVPIndicator_style_bitmap_src);
 
         if (drawable != null) {
@@ -208,7 +209,7 @@ public class RVPIndicator extends LinearLayout {
                 /**
                  * 下划线指示器:宽与item相等,高:0 没有指示器；未设置：item的1/10 ；具体值
                  */
-                mIndicatorWidth = (w / mTabVisibleCount) - (mStyleLinePadding * 2);
+                mIndicatorWidth = mIndicatorWidth < 0 ? (w / mTabVisibleCount) - (mStyleLinePadding * 2) : mIndicatorWidth;
                 mIndicatorHeight = mIndicatorHeight < 0 ? h / 10 : mIndicatorHeight;
                 mTranslationX = 0;
                 mRectF = new Rect(mStyleLinePadding, 0, mIndicatorWidth + mStyleLinePadding, mIndicatorHeight);
@@ -226,8 +227,8 @@ public class RVPIndicator extends LinearLayout {
                 /**
                  * 三角形指示器:宽与item(1/5)相等,高item的1/5
                  */
-                mIndicatorWidth = w / mTabVisibleCount / 5;
-                mIndicatorHeight = h / 5;
+                mIndicatorWidth = mIndicatorWidth < 0 ? w / mTabVisibleCount / 5 : mIndicatorWidth;
+                mIndicatorHeight = mIndicatorHeight < 0 ? h / 5 : mIndicatorHeight;
                 mTranslationX = 0;
                 break;
         }
@@ -372,7 +373,7 @@ public class RVPIndicator extends LinearLayout {
         /**
          * 重绘指示器
          */
-        mIndicatorWidth = (getWidth() / mTabVisibleCount) - (mStyleLinePadding * 2);
+        mIndicatorWidth = mIndicatorWidth < 0 ? (getWidth() / mTabVisibleCount) - (mStyleLinePadding * 2) : mIndicatorWidth;
         mIndicatorHeight = mIndicatorHeight < 0 ? getHeight() / 10 : mIndicatorHeight;
         mRectF = new Rect(mStyleLinePadding, 0, mIndicatorWidth + mStyleLinePadding, mIndicatorHeight);
         invalidate();

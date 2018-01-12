@@ -19,6 +19,8 @@
         <attr name="style_line_padding" format="dimension" />
         <!--指示器高度-->
         <attr name="indicator_height" format="dimension" />
+        <!--指示器宽度-->
+        <attr name="indicator_width" format="dimension" />
     </declare-styleable>
 
 </resources>
